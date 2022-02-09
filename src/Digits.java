@@ -14,7 +14,17 @@ public class Digits
      */
     public Digits(int num)
     {
-        /* to be implemented in part (a) */
+        digitList = new ArrayList<Integer>();
+        while (num > 0)
+        {
+            int remainder = num % 10;
+            digitList.add(0, remainder);
+            num = num / 10;
+        }
+        if (digitList.size() == 0)
+        {
+            digitList.add(Integer.valueOf(0));
+        }
     }
 
     // GETTER METHOD: added to enable test code (not provided in original FRQ)
@@ -29,6 +39,15 @@ public class Digits
      */
     public boolean isStrictlyIncreasing()
     {
-        /* to be implemented in part (b) */
+        int previous = -1;
+        for (int value : digitList)
+        {
+            if (value <= previous)
+            {
+                return false;
+            }
+            previous = value;
+        }
+        return true;
     }
 }
